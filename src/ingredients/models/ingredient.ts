@@ -1,9 +1,10 @@
 import { Field, ID, ObjectType } from 'type-graphql';
+import { IngredientDocument } from './ingredient.document';
 
 @ObjectType()
 export class Ingredient {
   @Field(type => ID)
-  id: string;
+  id: number;
 
   @Field()
   name: string;
@@ -12,8 +13,16 @@ export class Ingredient {
   notes?: string;
 
   @Field()
-  createdDate: Date;
+  createdAt: Date;
 
   @Field()
-  modifiedDate: Date;
+  updatedAt: Date;
+
+  constructor(private readonly ingredientDocument: IngredientDocument) {
+    this.id = ingredientDocument.id;
+    this.name = ingredientDocument.name;
+    this.notes = ingredientDocument.notes;
+    this.createdAt = ingredientDocument.createdAt;
+    this.updatedAt = ingredientDocument.updatedAt;
+  }
 }

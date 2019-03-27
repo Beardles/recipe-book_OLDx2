@@ -12,3 +12,9 @@ export class NewIngredientInput {
   @Length(0, 255)
   notes?: string;
 }
+
+@InputType()
+export class UpdateIngredientInput extends NewIngredientInput {
+  @Field()
+  id: string;
+}

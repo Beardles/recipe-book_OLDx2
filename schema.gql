@@ -10,10 +10,28 @@ type Ingredient {
   id: ID!
   name: String!
   notes: String
-  createdDate: Date!
-  modifiedDate: Date!
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+type Mutation {
+  addIngredient(newIngredientData: NewIngredientInput!): Ingredient!
+  updateIngredient(updateIngredientData: UpdateIngredientInput!): Ingredient!
+  deleteIngredient(id: String!): Ingredient!
+}
+
+input NewIngredientInput {
+  name: String!
+  notes: String
 }
 
 type Query {
+  ingredient(id: String!): Ingredient!
   ingredients: [Ingredient!]!
+}
+
+input UpdateIngredientInput {
+  name: String!
+  notes: String
+  id: String!
 }
