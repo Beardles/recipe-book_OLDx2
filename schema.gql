@@ -30,6 +30,10 @@ type Query {
   ingredients: [Ingredient!]!
 }
 
+type Subscription {
+  ingredientAdded: Ingredient!
+}
+
 input UpdateIngredientInput {
   name: String!
   notes: String

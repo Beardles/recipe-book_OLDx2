@@ -1,6 +1,5 @@
 import {
   NotFoundException,
-  Inject,
   InternalServerErrorException,
 } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
@@ -41,6 +40,7 @@ export class IngredientsResolver {
     if (!ingredient) {
       throw new InternalServerErrorException('Error creating new ingredient.');
     }
+    pubSub.publish('ingredientAdded', { ingredientAdded: ingredient });
 
     return ingredient;
   }
@@ -68,5 +68,10 @@ export class IngredientsResolver {
     }
 
     return ingredient;
+  }
+
+  @Subscription(returns => Ingredient)
+  ingredientAdded() {
+    return pubSub.asyncIterator('ingredientAdded');
   }
 }
