@@ -1,4 +1,4 @@
-import { IsOptional, Length, MaxLength } from 'class-validator';
+import { IsOptional, MaxLength } from 'class-validator';
 import { Field, InputType } from 'type-graphql';
 
 @InputType()
@@ -9,7 +9,7 @@ export class NewIngredientInput {
 
   @Field({ nullable: true })
   @IsOptional()
-  @Length(0, 255)
+  @MaxLength(255)
   notes?: string;
 }
 
