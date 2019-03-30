@@ -1,6 +1,7 @@
 import { Field, ID, ObjectType } from 'type-graphql';
 import { RecipeDocument } from './recipe.document';
 import { RecipeIngredientDocument } from './recipe-ingredient.document';
+import { RecipeIngredient } from './recipe-ingredient';
 
 @ObjectType()
 export class Recipe {
@@ -13,10 +14,10 @@ export class Recipe {
   @Field()
   description: string;
 
-  @Field()
-  ingredients: any[];
+  @Field(type => [RecipeIngredient])
+  ingredients: RecipeIngredient[];
 
-  @Field()
+  @Field(type => [String])
   steps: string[];
 
   @Field()
@@ -29,7 +30,9 @@ export class Recipe {
     this.id = recipeDocument.id;
     this.name = recipeDocument.name;
     this.description = recipeDocument.description;
-    this.ingredients = recipeDocument.ingredients;
+    this.ingredients = recipeDocument.ingredients.map(
+      ri => new RecipeIngredient(ri),
+    );
     this.steps = recipeDocument.steps;
     this.createdAt = recipeDocument.createdAt;
     this.updatedAt = recipeDocument.updatedAt;
