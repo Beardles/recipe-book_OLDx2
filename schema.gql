@@ -10,10 +10,74 @@ type Ingredient {
   id: ID!
   name: String!
   notes: String
-  createdDate: Date!
-  modifiedDate: Date!
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+type Mutation {
+  addRecipe(createRecipeData: NewRecipeInput!): Recipe!
+  updateRecipe(updateRecipeData: UpdateRecipeInput!): Recipe!
+  deleteRecipe(id: String!): Recipe!
+  addIngredient(newIngredientData: NewIngredientInput!): Ingredient!
+  updateIngredient(updateIngredientData: UpdateIngredientInput!): Ingredient!
+  deleteIngredient(id: String!): Ingredient!
+}
+
+input NewIngredientInput {
+  name: String!
+  notes: String
+}
+
+input NewRecipeIngredientInput {
+  id: ID!
+  quantity: String!
+}
+
+input NewRecipeInput {
+  name: String!
+  description: String!
+  steps: [String!]!
+  ingredients: [NewRecipeIngredientInput!]!
 }
 
 type Query {
+  recipe(id: String!): Recipe!
+  recipes: [Recipe!]!
+  ingredient(id: String!): Ingredient!
   ingredients: [Ingredient!]!
+}
+
+type Recipe {
+  id: ID!
+  name: String!
+  description: String!
+  ingredients: [RecipeIngredient!]!
+  steps: [String!]!
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+type RecipeIngredient {
+  id: ID!
+  quantity: String!
+  ingredient: String!
+}
+
+type Subscription {
+  recipeAdded: Recipe!
+  ingredientAdded: Ingredient!
+}
+
+input UpdateIngredientInput {
+  name: String!
+  notes: String
+  id: String!
+}
+
+input UpdateRecipeInput {
+  name: String!
+  description: String!
+  steps: [String!]!
+  ingredients: [NewRecipeIngredientInput!]!
+  id: String!
 }
