@@ -12,14 +12,17 @@ const Sidebar: React.FC = () => (
       alignItems="stretch"
       style={{ height: '100%' }}
     >
+      <Grid item>Recipe Book</Grid>
       <Grid item>
-        <SidebarLink href="/">Home</SidebarLink>
+        <SidebarLink href="/" color="secondary">
+          Home
+        </SidebarLink>
       </Grid>
       <Grid item>
-        <SidebarLink href="#">2</SidebarLink>
+        <SidebarLink href="/recipes">Recipes</SidebarLink>
       </Grid>
       <Grid item>
-        <SidebarLink href="#">3</SidebarLink>
+        <SidebarLink href="/ingredients">Ingredients</SidebarLink>
       </Grid>
     </Grid>
   </SidebarWrapper>

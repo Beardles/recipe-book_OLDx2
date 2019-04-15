@@ -1,12 +1,13 @@
 import styled from '@emotion/styled/macro';
+import { colors } from '../../themes';
 
 export const SidebarWrapper = styled('nav')`
-  background-color: #ffdab9;
+  background-color: ${colors.primary};
   height: 100vh;
 `;
 
 export const SidebarLink = styled('a')`
-  color: #34385e;
+  color: ${colors.secondary};
   display: inline-block;
   padding: 8px 0;
   text-align: center;
@@ -14,8 +15,8 @@ export const SidebarLink = styled('a')`
   width: 100%;
 
   &:hover {
-    background-color: #34385e;
-    color: #ffdab9;
+    background-color: ${colors.secondary};
+    color: ${colors.primary};
     cursor: pointer;
   }
 `;
