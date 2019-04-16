@@ -14,4 +14,7 @@ export const theme: Theme = createMuiTheme({
       main: colors.secondary,
     },
   },
+  typography: {
+    useNextVariants: true,
+  },
 });

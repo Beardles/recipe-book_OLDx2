@@ -6,9 +6,9 @@ import { routes, IRouteConfig } from './routes';
 import { theme } from './themes';
 
 const App: React.FC = () => (
-  <CssBaseline>
-    <MuiThemeProvider theme={theme}>
-      <Router>
+  <Router>
+    <CssBaseline>
+      <MuiThemeProvider theme={theme}>
         <Hidden xsDown>
           <Grid container spacing={0}>
             <Grid item xs={2}>
@@ -27,9 +27,9 @@ const App: React.FC = () => (
           </Grid>
         </Hidden>
         <Hidden smUp>Mobile Placeholder</Hidden>
-      </Router>
-    </MuiThemeProvider>
-  </CssBaseline>
+      </MuiThemeProvider>
+    </CssBaseline>
+  </Router>
 );
 
 export default App;

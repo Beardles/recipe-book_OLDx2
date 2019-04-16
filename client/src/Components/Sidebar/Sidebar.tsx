@@ -1,6 +1,7 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
-import { SidebarWrapper, SidebarLink } from './sidebar.styles';
+import { Grid, Typography } from '@material-ui/core';
+import { CollectionsBookmark } from '@material-ui/icons';
+import { SidebarWrapper, SidebarLink, SidebarLogo } from './sidebar.styles';
 
 const Sidebar: React.FC = () => (
   <SidebarWrapper>
@@ -12,17 +13,28 @@ const Sidebar: React.FC = () => (
       alignItems="stretch"
       style={{ height: '100%' }}
     >
-      <Grid item>Recipe Book</Grid>
       <Grid item>
-        <SidebarLink href="/" color="secondary">
+        <SidebarLogo>
+          <Typography
+            style={{ marginBottom: '8px' }}
+            variant="h5"
+            color="secondary"
+          >
+            Recipe Book
+          </Typography>
+          <CollectionsBookmark fontSize="large" color="secondary" />
+        </SidebarLogo>
+      </Grid>
+      <Grid item>
+        <SidebarLink to="/" color="secondary">
           Home
         </SidebarLink>
       </Grid>
       <Grid item>
-        <SidebarLink href="/recipes">Recipes</SidebarLink>
+        <SidebarLink to="/recipes">Recipes</SidebarLink>
       </Grid>
       <Grid item>
-        <SidebarLink href="/ingredients">Ingredients</SidebarLink>
+        <SidebarLink to="/ingredients">Ingredients</SidebarLink>
       </Grid>
     </Grid>
   </SidebarWrapper>
