@@ -4,6 +4,7 @@ import { CssBaseline, Grid, Hidden, MuiThemeProvider } from '@material-ui/core';
 import { Sidebar } from './Components/Sidebar';
 import { routes, IRouteConfig } from './routes';
 import { theme } from './themes';
+import { MainContentWrapper } from './app.styles';
 
 const App: React.FC = () => (
   <Router>
@@ -15,14 +16,16 @@ const App: React.FC = () => (
               <Sidebar />
             </Grid>
             <Grid item xs={10}>
-              {routes.map((routeConfig: IRouteConfig, i: number) => (
-                <Route
-                  key={i}
-                  path={routeConfig.path}
-                  exact={routeConfig.exact}
-                  component={routeConfig.component}
-                />
-              ))}
+              <MainContentWrapper>
+                {routes.map((routeConfig: IRouteConfig, i: number) => (
+                  <Route
+                    key={i}
+                    path={routeConfig.path}
+                    exact={routeConfig.exact}
+                    component={routeConfig.component}
+                  />
+                ))}
+              </MainContentWrapper>
             </Grid>
           </Grid>
         </Hidden>
