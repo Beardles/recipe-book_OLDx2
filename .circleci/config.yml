@@ -37,4 +37,5 @@ jobs:
       - run: yarn test
 
       # run client tests
+      - run: cd client && yarn install
       - run: cd client && yarn test
